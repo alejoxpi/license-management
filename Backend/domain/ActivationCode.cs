@@ -1,11 +1,11 @@
 using MongoDB.Bson;
-using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
-using System.Collections.Generic;
+
 
 namespace LM.Domain
 {
 public class ActivationCode{
+
         [BsonId]
         public ObjectId Id { get; set; }
 
