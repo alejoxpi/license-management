@@ -36,10 +36,10 @@ using LM.Domain;
 
 namespace LM.Functions
 {
-    public static class CreateActivationCodes
+    public class CreateActivationCodes
     {
         [FunctionName("CreateActivationCodes")]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "v1/CreateActivationCodes")] HttpRequest req,
             ILogger log)
         {
@@ -83,7 +83,7 @@ namespace LM.Functions
                 response.Code = "Success";
                 response.Message = "Activation codes created succefully.";
 
-                return new OkObjectResult(JsonConvert.SerializeObject(response));
+                return new OkObjectResult(response);
 
             }catch(Exception e)
             {

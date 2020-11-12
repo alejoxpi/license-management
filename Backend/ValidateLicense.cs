@@ -77,7 +77,7 @@ namespace LM.Functions
                     response.Code = "Failed";
                     response.Message = "License not found.";
 
-                    return new OkObjectResult(JsonConvert.SerializeObject(response));
+                    return new OkObjectResult(response);
                 }else if(findLicensesResult.Count > 1){
                     throw new Exception("More than 1 license with the same license code.");
                 }               
@@ -93,18 +93,26 @@ namespace LM.Functions
                     DateTime _now = DateTime.UtcNow;
                     TimeSpan span = _now.Subtract ( license.ActivationDate );
 
-                    if(span.Minutes < license.LifeTime){
+                    if(license.LifeTime > 0){
 
-                        licenseValidationResponse.RemainingTime = license.LifeTime - span.Minutes;
+                        if(span.Minutes < license.LifeTime){
+
+                            licenseValidationResponse.RemainingTime = license.LifeTime - span.Minutes;
+                            licenseValidationResponse.valid = true;
+                            licenseValidationResponse.active = true;
+                            licenseValidationResponse.LicenseStatus = "Active";
+                        }else{
+
+                            licenseValidationResponse.RemainingTime = -1;
+                            licenseValidationResponse.valid = false;
+                            licenseValidationResponse.active = false;
+                            licenseValidationResponse.LicenseStatus = "Expired";
+                        }
+                    }else{
+                        licenseValidationResponse.RemainingTime = -1;
                         licenseValidationResponse.valid = true;
                         licenseValidationResponse.active = true;
                         licenseValidationResponse.LicenseStatus = "Active";
-                    }else{
-
-                        licenseValidationResponse.RemainingTime = -1;
-                        licenseValidationResponse.valid = false;
-                        licenseValidationResponse.active = false;
-                        licenseValidationResponse.LicenseStatus = "Inactive";
                     }
                 }else{                    
                    licenseValidationResponse.RemainingTime = -1;
@@ -125,7 +133,7 @@ namespace LM.Functions
 
                 await validation_requests_col.InsertOneAsync(validationRequest);
 
-                return new OkObjectResult(JsonConvert.SerializeObject(licenseValidationResponse));
+                return new OkObjectResult(licenseValidationResponse);
             }
             catch (System.Exception e)
             {   
@@ -134,43 +142,15 @@ namespace LM.Functions
                 response.Code = "Excepcion";
                 response.Message = e.Message;
                 
-                 return new OkObjectResult(JsonConvert.SerializeObject(response));
+                 return new OkObjectResult(response);
             }
         }
-
-
         public bool CompareHashSettingsLicenseAndRequest(License license, ValidationRequest validationRequest)
         {             
              return string.Equals(
                  Crypto.concatenate_sha256_hash(license.LicenseSettings.GetValueList()),
                  Crypto.concatenate_sha256_hash(validationRequest.ValidationSettings.GetValueList())
              );             
-        }
-
-        public bool CompareLicenseAndRequest(License license, ValidationRequest validationRequest)
-        {
-            bool successComparation = true;
-
-            if(license.LicenseHash != validationRequest.LicenseCode)
-                successComparation = false;
-
-            if(license.LicenseSettings.Company != validationRequest.ValidationSettings.Company)
-                successComparation = false;
-
-            if(license.LicenseSettings.CustomerCode != validationRequest.ValidationSettings.CustomerCode)
-                successComparation = false;
-
-            if(license.LicenseSettings.Email != validationRequest.ValidationSettings.Email)
-                successComparation = false;
-
-            if(license.LicenseSettings.HardwareId != validationRequest.ValidationSettings.HardwareId)
-                successComparation = false;
-
-            if(license.LicenseSettings.Location != validationRequest.ValidationSettings.Location)
-                successComparation = false;
-
-
-            return successComparation;
         }
     }
 }

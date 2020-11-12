@@ -37,10 +37,10 @@ using LM.Utils;
 
 namespace LM.Functions
 {
-    public static class ActivateLicense
+    public class ActivateLicense
     {
         [FunctionName("ActivateLicense")]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "v1/ActivateLicense")] HttpRequest req,
             ILogger log)
         {
@@ -81,7 +81,7 @@ namespace LM.Functions
                     response.Code = "Failed";
                     response.Message = "Activation code could not be validated.";
 
-                    return new OkObjectResult(JsonConvert.SerializeObject(response));
+                    return new OkObjectResult(response);
                 }                
 
                 License license = new License();
@@ -101,7 +101,7 @@ namespace LM.Functions
                     response.Code = "Failed";
                     response.Message = "License could not be activated.";
 
-                    return new OkObjectResult(JsonConvert.SerializeObject(response));
+                    return new OkObjectResult(response);
 
                 }else{
                     // 0 means there is not a license assined
@@ -143,7 +143,7 @@ namespace LM.Functions
                     response.Message = "License has been assigned and activated.";
                     response.LicenseCode = license.LicenseHash;
 
-                    return new OkObjectResult(JsonConvert.SerializeObject(response));                    
+                    return new OkObjectResult(response);                    
                 }
             }
             catch (System.Exception e)
@@ -154,7 +154,7 @@ namespace LM.Functions
                 response.Code = "Excepcion";
                 response.Message = e.Message;
                 
-                return new OkObjectResult(JsonConvert.SerializeObject(response));  
+                return new OkObjectResult(response);  
             }           
            
         }
