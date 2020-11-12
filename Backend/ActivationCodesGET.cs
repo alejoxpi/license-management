@@ -17,10 +17,10 @@ using LM.Utils;
 
 namespace LM.Functions
 {
-    public static class ActivationCodesGET
+    public class ActivationCodesGET
     {
         [FunctionName("ActivationCodesGET")]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "v1/ActivationCodes")] HttpRequest req,
             ILogger log)
         {

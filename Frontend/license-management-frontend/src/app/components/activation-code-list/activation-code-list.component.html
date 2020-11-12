@@ -1,0 +1,24 @@
+<div class="list row">    
+    <div class="col-md-6">
+      <h4>Activation Codes List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let activationCode of activationcodes; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveActivationCode(activationCode, i)"
+        >
+         {{activationCode.id}}
+        </li>
+      </ul>  
+      
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentActivationCode">
+        <h4>Activation Code Detail</h4>
+        <div>
+          <label><strong>Product Name: </strong></label>
+        </div>       
+      </div>
+    </div>
+  </div>
