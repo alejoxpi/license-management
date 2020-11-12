@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 
 namespace LM.Utils
 {
@@ -20,6 +21,11 @@ namespace LM.Utils
         }
 
         return Sb.ToString();
+      }
+
+      public static string concatenate_sha256_hash(List<string> _list)
+      {
+          return sha256_hash(string.Concat(_list));
       }    
     }        
 }

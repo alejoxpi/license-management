@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using LM.Utils;
 
 namespace LM.Domain
 {
@@ -19,7 +20,6 @@ namespace LM.Domain
 
         [BsonElement("ActivationResult")] 
         public string ActivationResult {get;set;}
-
 
     }
 }

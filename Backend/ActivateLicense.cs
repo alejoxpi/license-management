@@ -32,6 +32,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using MongoDB.Driver;
 using LM.Domain;
+using System.Collections.Generic;
+using LM.Utils;
 
 namespace LM.Functions
 {
@@ -80,11 +82,10 @@ namespace LM.Functions
                     response.Message = "Activation code could not be validated.";
 
                     return new OkObjectResult(JsonConvert.SerializeObject(response));
-                }
+                }                
 
                 License license = new License();
-                license.ActivationCode = activationRequest.ActivationCode;
-                license.LicenseHash = activationRequest.ActivationSettings.HashSettings;
+                license.ActivationCode = activationRequest.ActivationCode;                
 
                 var findLicensesResult = licenses_col.Find(q=>q.ActivationCode == license.ActivationCode).ToList();
 
@@ -105,13 +106,30 @@ namespace LM.Functions
                 }else{
                     // 0 means there is not a license assined
 
-                    license.LicenseSettings = new LicenseSettings();
+                    ActivationCode activationCode = findActivationCodeResult[0];
 
+                    List<string> activationSettings_ValueList = activationRequest.ActivationSettings.GetValueList();
+
+                    // Generate hash only for settings
+                    string license_hashsettings = Crypto.concatenate_sha256_hash(activationSettings_ValueList);
+
+                    activationSettings_ValueList.Add(activationRequest.ActivationCode);
+
+                    // Generate hash adding activation code for generate license code
+                    activationRequest.ActivationSettings.HashSettings = Crypto.concatenate_sha256_hash(activationSettings_ValueList); 
+
+                    license.LicenseHash = activationRequest.ActivationSettings.HashSettings;
+
+                    license.LicenseSettings = new LicenseSettings();
+                    license.LifeTime = activationCode.LifeTime;
+                    license.Type = activationCode.LicenseType;
                     license.LicenseSettings.Company = activationRequest.ActivationSettings.Company;
                     license.LicenseSettings.CustomerCode = activationRequest.ActivationSettings.CustomerCode;
                     license.LicenseSettings.Email = activationRequest.ActivationSettings.Email;
                     license.LicenseSettings.HardwareId = activationRequest.ActivationSettings.HardwareId;
-                    license.LicenseSettings.Location = activationRequest.ActivationSettings.Location;                
+                    license.LicenseSettings.Location = activationRequest.ActivationSettings.Location; 
+                    license.ActivationDate = DateTime.UtcNow;               
+                    license.LicenseSettings.HashSettings = license_hashsettings;
 
                     await licenses_col.InsertOneAsync(license);
 
@@ -136,7 +154,7 @@ namespace LM.Functions
                 response.Code = "Excepcion";
                 response.Message = e.Message;
                 
-                return new OkObjectResult(e.Message);  
+                return new OkObjectResult(JsonConvert.SerializeObject(response));  
             }           
            
         }

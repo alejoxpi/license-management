@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using LM.Utils;
+using System.Collections.Generic;
+
 
 
 namespace LM.Domain
@@ -23,14 +24,19 @@ namespace LM.Domain
         public string CustomerCode { get; set; } 
 
         [BsonElement("HashSettings")]
-        public string HashSettings { 
-            
-            get
-            {                
-                return Crypto.sha256_hash(string.Concat(this.HardwareId,this.Email,this.Company,this.Company,this.Location,this.CustomerCode));
-            }
-            
+        public string HashSettings { get; set;}
+
+        public List<string> GetValueList()
+        {
+            List<string> _list = new List<string>();
+
+            _list.Add(HardwareId);
+            _list.Add(Email);
+            _list.Add(Company);
+            _list.Add(Location);
+            _list.Add(CustomerCode);          
+
+            return _list;
         }
-       
     }
 }

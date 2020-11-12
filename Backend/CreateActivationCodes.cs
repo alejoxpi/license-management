@@ -59,11 +59,12 @@ namespace LM.Functions
                 var product_code = ((string)  data?.productcode).Trim() ;
                 var product_name = ((string) data?.productname).Trim();
                 var license_type = ((string) data?.licensetype).Trim();                
-                var quantity = (int) data?.quantity;                
+                var quantity = (int) data?.quantity;  
+                var lifetime = (int) data?.lifetime;              
 
                 //Simple validation
-                if( product_code=="" || product_name == "" || license_type == "" || quantity < 1 )
-                    throw new Exception("Parameters no valid for operation.");                
+                if( product_code=="" || product_name == "" || license_type == "" || quantity < 1 || lifetime < 0)
+                    throw new Exception("Parameters are not valid for operation.");                
 
                 for(int i = 0; i < quantity; i++)
                 {
@@ -72,11 +73,17 @@ namespace LM.Functions
                     activationCode.ProductCode = product_code;
                     activationCode.ProductName = product_name;
                     activationCode.LicenseType = license_type;
+                    activationCode.LifeTime = lifetime;
 
                     await collection.InsertOneAsync(activationCode);
                 }
 
-                return new OkObjectResult("Success");
+                BasicResponse response = new BasicResponse();
+                response.Status = "OK";
+                response.Code = "Success";
+                response.Message = "Activation codes created succefully.";
+
+                return new OkObjectResult(JsonConvert.SerializeObject(response));
 
             }catch(Exception e)
             {

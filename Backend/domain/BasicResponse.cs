@@ -16,4 +16,13 @@ namespace LM.Domain
     {
         public string LicenseCode;
     }
+
+    public class LicenseValidationResponse : BasicResponse
+    {
+        public int RemainingTime;
+        public string LicenseStatus;
+        public bool active;
+        public bool valid;
+
+    }
 }

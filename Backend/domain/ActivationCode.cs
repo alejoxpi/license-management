@@ -21,5 +21,10 @@ public class ActivationCode{
         [BsonElement("LicenseType")]
         public string LicenseType { get; set; }
 
+        [BsonElement("LifeTime")]
+        public int LifeTime { get; set; }
+
+        
+
     }
 }
