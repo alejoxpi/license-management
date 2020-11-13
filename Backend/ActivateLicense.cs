@@ -66,6 +66,7 @@ namespace LM.Functions
 
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                 ActivationRequest activationRequest = JsonConvert.DeserializeObject<ActivationRequest>(requestBody);
+                activationRequest.RequestDate = DateTime.UtcNow;
 
                 var findActivationCodeResult = activationcodes_col.Find(q=>q.GuidCode == activationRequest.ActivationCode).ToList();
 
@@ -130,6 +131,9 @@ namespace LM.Functions
                     license.LicenseSettings.Location = activationRequest.ActivationSettings.Location; 
                     license.ActivationDate = DateTime.UtcNow;               
                     license.LicenseSettings.HashSettings = license_hashsettings;
+                    license.Status = "Active";
+
+                    
 
                     await licenses_col.InsertOneAsync(license);
 

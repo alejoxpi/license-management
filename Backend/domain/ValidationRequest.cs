@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace LM.Domain
 {
@@ -19,6 +20,10 @@ namespace LM.Domain
 
         [BsonElement("ValidationResult")] 
         public string ValidationResult {get;set;}
+
+        [BsonElement("RequestDate")] 
+        public DateTime RequestDate { get; set; }
+
 
 
     }

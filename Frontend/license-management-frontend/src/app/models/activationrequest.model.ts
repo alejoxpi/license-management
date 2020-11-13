@@ -13,4 +13,5 @@ export class ActivationRequest {
     public activationSettings: ActivationSettings = new ActivationSettings;
     public status!: string;
     public activationResult!: string;
+    public requestDate!: Date;
 }

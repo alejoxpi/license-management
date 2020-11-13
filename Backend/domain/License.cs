@@ -24,6 +24,9 @@ namespace LM.Domain
         [BsonElement("Type")]
         public string Type { get; set; }
 
+        [BsonElement("Status")]
+        public string Status { get; set; }
+
         [BsonElement("LicenseSettings")] 
         public LicenseSettings LicenseSettings  {get;set;}
         

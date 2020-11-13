@@ -13,4 +13,5 @@ export class ValidationRequest {
     public validationSettings: ValidationSettings = new ValidationSettings;
     public status!: string;
     public validationResult!: string;
+    public requestDate!: Date;
 }

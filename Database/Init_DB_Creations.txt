@@ -1,0 +1,9 @@
+/*This script must be execute in mongo shell*/
+
+use license-management;
+db.createCollection("activation-codes");
+db.createCollection("activation-requests");
+db.createCollection("licenses");
+db.createCollection("validation-requests");
+
+

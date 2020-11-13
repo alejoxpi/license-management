@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const baseUrl = 'http://localhost:7071/api/v1/activationrequests';
+const baseUrl = environment.activationrequests_api;
 
 @Injectable({
   providedIn: 'root'

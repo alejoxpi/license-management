@@ -10,6 +10,8 @@ import { ActivationCodeDetailsComponent } from './components/activation-code-det
 import { ActivationRequestListComponent } from './components/activation-request-list/activation-request-list.component';
 import { LicenseListComponent } from './components/license-list/license-list.component';
 import { ValidationRequestListComponent } from './components/validation-request-list/validation-request-list.component';
+import { ActivationCodeAddComponent } from './components/activation-code-add/activation-code-add.component';
+import { LicenseCompareComponent } from './components/license-compare/license-compare.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { ValidationRequestListComponent } from './components/validation-request-
     ActivationCodeDetailsComponent,
     ActivationRequestListComponent,
     LicenseListComponent,
-    ValidationRequestListComponent
+    ValidationRequestListComponent,
+    ActivationCodeAddComponent,
+    LicenseCompareComponent
   ],
   imports: [
     BrowserModule,

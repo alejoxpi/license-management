@@ -14,5 +14,6 @@ export class License {
     public activationDate!: Date;
     public lifeTime!: number;
     public type!: string;
+    public status!: string;
     public licenseSettings: LicenseSettings = new LicenseSettings;
 }

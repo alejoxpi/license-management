@@ -62,6 +62,7 @@ namespace LM.Functions
 
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                 ValidationRequest validationRequest = JsonConvert.DeserializeObject<ValidationRequest>(requestBody); 
+                validationRequest.RequestDate = DateTime.UtcNow;
 
                 var findLicensesResult = licenses_col.Find(q=>q.LicenseHash == validationRequest.LicenseCode).ToList(); 
 

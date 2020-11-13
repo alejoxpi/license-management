@@ -1,0 +1,74 @@
+<div style="width: 400px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        
+        <div class="form-group">
+          <label for="title">Product Code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="productcode"
+            required
+            [(ngModel)]="creationRequest.productcode"
+            name="title"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="title">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productname"
+              required
+              [(ngModel)]="creationRequest.productname"
+              name="title"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="title">License Type</label>
+            <input
+              type="text"
+              class="form-control"
+              id="licensetype"
+              required
+              [(ngModel)]="creationRequest.licensetype"
+              name="title"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="title">Quantity</label>
+            <input
+              type="text"
+              class="form-control"
+              id="quantity"
+              required
+              [(ngModel)]="creationRequest.quantity"
+              name="title"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="title">Lifetime</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productcode"
+              required
+              [(ngModel)]="creationRequest.lifetime"
+              name="title"
+            />
+          </div>
+  
+  
+        <button (click)="generateCodes()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Activation codes created succefully.</h4>
+        <button class="btn btn-success" (click)="newRequest()">Add</button>
+      </div>
+    </div>
+  </div>

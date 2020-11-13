@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  activationcodes_api: "http://localhost:7071/api/v1/activationcodes",
+  activationrequests_api : "http://localhost:7071/api/v1/activationrequests",
+  licenses_api: "http://localhost:7071/api/v1/licenses",
+  validationrequests_api : "http://localhost:7071/api/v1/validationrequests",
+  createactivationcodes_api : "http://localhost:7071/api/v1/createactivationcodes"
 };
 
 /*
