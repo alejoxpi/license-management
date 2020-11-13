@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { error } from 'protractor';
 import { ActivationCodeService } from 'src/app/services/activation-code.service';
+import { ActivationCode } from '../../models/activationcode.model';
 
 @Component({
   selector: 'app-activation-code-list',
@@ -9,9 +10,9 @@ import { ActivationCodeService } from 'src/app/services/activation-code.service'
 })
 export class ActivationCodeListComponent implements OnInit {
 
-  activationcodes : any;
+  activationcodes : ActivationCode[] = [];
   title = '';
-  currentActivationCode = null;
+  currentActivationCode = new ActivationCode();
   currentIndex = -1;
 
   constructor(private activationcodeService : ActivationCodeService) { }
@@ -34,11 +35,11 @@ export class ActivationCodeListComponent implements OnInit {
 
   refreshList(): void {
     this.retrieveActivationCodes();
-    this.currentActivationCode = null;
+    this.currentActivationCode = new ActivationCode();
     this.currentIndex = -1;
   }
 
-  setActiveActivationCode(activationcode:any, index:number): void {
+  setActiveActivationCode(activationcode:ActivationCode, index:number): void {
     this.currentActivationCode = activationcode;
     this.currentIndex = index;
   }

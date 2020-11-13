@@ -15,10 +15,28 @@
     </div>
     <div class="col-md-6">
       <div *ngIf="currentActivationCode">
-        <h4>Activation Code Detail</h4>
-        <div>
-          <label><strong>Product Name: </strong></label>
-        </div>       
+        
+        <h4>Activation Code Details</h4>
+      <div>
+        <label><strong>Product Name:</strong></label> {{ currentActivationCode.productName }}
+      </div>
+      <div>
+        <label><strong>Product Code:</strong></label>
+        {{ currentActivationCode.productCode }}
+      </div>
+      <div>
+        <label><strong>Guid Code:</strong></label>
+        {{ currentActivationCode.guidCode }}
+      </div>
+      <div>
+        <label><strong>License Type:</strong></label>
+        {{ currentActivationCode.licenseType }}
+      </div>
+      <div>
+        <label><strong>Lifetime:</strong></label>
+        {{ currentActivationCode.lifeTime }}
+      </div>
+
       </div>
     </div>
   </div>

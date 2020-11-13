@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ActivationCodeListComponent } from './components/activation-code-list/activation-code-list.component';
-import { ActivationCodeDetailsComponent } from './components/activation-code-details/activation-code-details.component';
+import { ActivationRequestListComponent } from './components/activation-request-list/activation-request-list.component';
+import { LicenseListComponent } from './components/license-list/license-list.component';
+import { ValidationRequestListComponent } from './components/validation-request-list/validation-request-list.component';
 
 const routes: Routes = [
   { path: 'activationcodes', component: ActivationCodeListComponent },
-  { path: 'activationcodes/:id', component: ActivationCodeDetailsComponent }
+  { path: 'activationrequests', component: ActivationRequestListComponent },
+  { path: 'licenses', component: LicenseListComponent },
+  { path: 'validationrequests', component: ValidationRequestListComponent }
+  
 ];
 
 @NgModule({

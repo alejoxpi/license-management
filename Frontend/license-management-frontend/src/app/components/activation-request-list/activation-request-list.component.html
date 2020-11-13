@@ -1,0 +1,55 @@
+<div class="list row">    
+    <div class="col-md-6">
+      <h4>Activation Request List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let _element of _listElements; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveActivationCode(_element, i)"
+        >
+         {{_element.id}}
+        </li>
+      </ul>  
+      
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentElement">
+        
+        <h4>Activation Request Details</h4>
+        <div>
+            <label><strong>Id:</strong></label> {{ currentElement.id }}
+          </div>   
+      <div>
+        <label><strong>Activation Code:</strong></label> {{ currentElement.activationCode }}
+      </div>   
+      <div>
+        <label><strong>Status:</strong></label> {{ currentElement.status }}
+      </div>
+      <div>
+        <label><strong>Request Result:</strong></label> {{ currentElement.activationResult }}
+      </div>   
+      <br>
+      <h4>Activation Configuration Settings</h4>
+
+        <div>
+            <label><strong>Hardware Id:</strong></label>{{currentElement?.activationSettings?.hardwareId}}  
+          </div>   
+          <div>
+            <label><strong>Email:</strong></label>{{currentElement?.activationSettings?.email}}  
+          </div>   
+          <div>
+            <label><strong>Company:</strong></label>{{currentElement?.activationSettings?.company}}  
+          </div>   
+          <div>
+            <label><strong>Location:</strong></label>{{currentElement?.activationSettings?.location}}  
+          </div>   
+          <div>
+            <label><strong>Customer Code:</strong></label>{{currentElement?.activationSettings?.customerCode}}  
+          </div>   
+          <div>
+            <label><strong>Settings Hash:</strong></label>{{currentElement?.activationSettings?.hashSettings}}  
+          </div>   
+      </div>
+    </div>
+  </div>
