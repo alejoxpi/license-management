@@ -1,4 +1,4 @@
-export class ActivationSettings {
+export class ValidationSettings {
     public hardwareId!: string;
     public email!: string;
     public company!: string;
@@ -7,10 +7,10 @@ export class ActivationSettings {
     public hashSettings!: string;
 }
 
-export class ActivationRequest {
+export class ValidationRequest {
     public id!: string;
-    public activationCode!: string;
-    public activationSettings: ActivationSettings = new ActivationSettings;
+    public licenseCode!: string;
+    public validationSettings: ValidationSettings = new ValidationSettings;
     public status!: string;
-    public activationResult!: string;
+    public validationResult!: string;
 }

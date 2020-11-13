@@ -1,1 +1,60 @@
-<p>validation-request-list works!</p>
+<div class="list row">    
+    <div class="col-md-6">
+      <h4>Validation Request List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let _element of _listElements; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveActivationCode(_element, i)"
+        >
+         {{_element.id}}
+        </li>
+      </ul>  
+    </div>
+
+    <div class="col-md-6">
+      <div *ngIf="currentElement">
+        
+        <h4>Validation Request Details</h4>
+        <div>
+            <label><strong>Id:</strong></label> {{ currentElement.id }}
+          </div>        
+      <div>
+        <label><strong>Status:</strong></label> {{ currentElement.status }}
+      </div>
+      <div>
+        <label><strong>Result:</strong></label> {{ currentElement.validationResult }}
+      </div>   
+      <div>
+          <label><strong>License Code:</strong></label> {{ currentElement.licenseCode }}
+        </div>
+        
+        <br>
+        <h4>Activation Configuration Settings</h4>
+  
+          <div>
+              <label><strong>Hardware Id:</strong></label>{{currentElement?.validationSettings?.hardwareId}}  
+            </div>   
+            <div>
+              <label><strong>Email:</strong></label>{{currentElement?.validationSettings?.email}}  
+            </div>   
+            <div>
+              <label><strong>Company:</strong></label>{{currentElement?.validationSettings?.company}}  
+            </div>   
+            <div>
+              <label><strong>Location:</strong></label>{{currentElement?.validationSettings?.location}}  
+            </div>   
+            <div>
+              <label><strong>Customer Code:</strong></label>{{currentElement?.validationSettings?.customerCode}}  
+            </div>   
+            <div>
+              <label><strong>Settings Hash:</strong></label>{{currentElement?.validationSettings?.hashSettings}}  
+            </div> 
+     
+      </div>
+    </div>
+
+
+
+</div>

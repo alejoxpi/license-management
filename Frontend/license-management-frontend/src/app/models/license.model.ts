@@ -1,4 +1,4 @@
-export class ActivationSettings {
+export class LicenseSettings {
     public hardwareId!: string;
     public email!: string;
     public company!: string;
@@ -7,10 +7,12 @@ export class ActivationSettings {
     public hashSettings!: string;
 }
 
-export class ActivationRequest {
+export class License {
     public id!: string;
+    public licenseHash!: string;
     public activationCode!: string;
-    public activationSettings: ActivationSettings = new ActivationSettings;
-    public status!: string;
-    public activationResult!: string;
+    public activationDate!: Date;
+    public lifeTime!: number;
+    public type!: string;
+    public licenseSettings: LicenseSettings = new LicenseSettings;
 }
