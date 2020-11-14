@@ -50,7 +50,7 @@ namespace LM.Functions
                 var dbName = System.Environment.GetEnvironmentVariable("license_management_db");
                 var database = client.GetDatabase(dbName);
                 var collection = database.GetCollection<ActivationCode>(
-                    System.Environment.GetEnvironmentVariable("activation-codes-col")
+                    System.Environment.GetEnvironmentVariable("activation_codes_col")
                     );
 
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();

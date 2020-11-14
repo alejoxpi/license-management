@@ -51,15 +51,15 @@ namespace LM.Functions
                 var dbName = System.Environment.GetEnvironmentVariable("license_management_db");
                 var database = client.GetDatabase(dbName);
                 var collection = database.GetCollection<ActivationRequest>(
-                    System.Environment.GetEnvironmentVariable("activation-requests-col")
+                    System.Environment.GetEnvironmentVariable("activation_requests_col")
                     );
 
                 var licenses_col = database.GetCollection<License>(
-                     System.Environment.GetEnvironmentVariable("licenses-col")
+                     System.Environment.GetEnvironmentVariable("licenses_col")
                 );  
 
                 var activationcodes_col = database.GetCollection<ActivationCode>(
-                     System.Environment.GetEnvironmentVariable("activation-codes-col")
+                     System.Environment.GetEnvironmentVariable("activation_codes_col")
                 );  
 
 

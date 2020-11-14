@@ -53,11 +53,11 @@ namespace LM.Functions
                 var database = client.GetDatabase(dbName);
 
                 var validation_requests_col = database.GetCollection<ValidationRequest>(
-                    System.Environment.GetEnvironmentVariable("validation-requests-col")
+                    System.Environment.GetEnvironmentVariable("validation_requests_col")
                     );
 
                  var licenses_col = database.GetCollection<License>(
-                     System.Environment.GetEnvironmentVariable("licenses-col")
+                     System.Environment.GetEnvironmentVariable("licenses_col")
                 ); 
 
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();

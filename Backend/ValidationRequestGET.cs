@@ -25,7 +25,7 @@ namespace LM.Functions
                 var database = client.GetDatabase(dbName);
 
                  var validationrequests_col = database.GetCollection<ValidationRequest>(
-                    System.Environment.GetEnvironmentVariable("validation-requests-col")
+                    System.Environment.GetEnvironmentVariable("validation_requests_col")
                     );
 
                var filter = Builders<ValidationRequest>.Filter.Eq("_id", new ObjectId(id));

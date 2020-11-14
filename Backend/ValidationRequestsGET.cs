@@ -28,7 +28,7 @@ namespace LM.Functions
                 var dbName = System.Environment.GetEnvironmentVariable("license_management_db");
                 var database = client.GetDatabase(dbName);
                 var validationrequests_col = database.GetCollection<ValidationRequest>(
-                    System.Environment.GetEnvironmentVariable("validation-requests-col")
+                    System.Environment.GetEnvironmentVariable("validation_requests_col")
                     );
 
                 List<ValidationRequest> _list = validationrequests_col.Find( new BsonDocument() ).ToList();

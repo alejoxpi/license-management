@@ -26,7 +26,7 @@ namespace LM.Functions
                 var dbName = System.Environment.GetEnvironmentVariable("license_management_db");
                 var database = client.GetDatabase(dbName);
                 var activationcodes_col = database.GetCollection<ActivationCode>(
-                    System.Environment.GetEnvironmentVariable("activation-codes-col")
+                    System.Environment.GetEnvironmentVariable("activation_codes_col")
                     );
 
                 List<ActivationCode> _list = activationcodes_col.Find( new BsonDocument() ).ToList();
