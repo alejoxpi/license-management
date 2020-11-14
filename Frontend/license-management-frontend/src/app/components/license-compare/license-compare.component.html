@@ -1,1 +1,119 @@
-<p>license-compare works!</p>
+<div class="list row">    
+    <div class="col-md-6">
+
+        <div >
+
+          <h4>Activation Configuration Settings</h4>
+      
+              <div>
+                  <label><strong>Hardware Id:</strong></label>{{license?.licenseSettings?.hardwareId}}  
+                </div>   
+                <div>
+                  <label><strong>Email:</strong></label>{{license?.licenseSettings?.email}}  
+                </div>   
+                <div>
+                  <label><strong>Company:</strong></label>{{license?.licenseSettings?.company}}  
+                </div>   
+                <div>
+                  <label><strong>Location:</strong></label>{{license?.licenseSettings?.location}}  
+                </div>   
+                <div>
+                  <label><strong>Customer Code:</strong></label>{{license?.licenseSettings?.customerCode}}  
+                </div>   
+                <div>
+                  <label><strong>Settings Hash:</strong></label>
+                </div>
+                <div class="alert alert-success small" role="alert"  >
+                  {{license?.licenseSettings?.hashSettings}}  
+                </div> 
+
+                <br>
+            <h4>License Details</h4>
+            <div>
+                <label><strong>Id:</strong></label> {{ license.id }}
+              </div>   
+         
+          <div>
+            <label><strong>Activation Code:</strong></label> {{ license.activationCode }}
+          </div>
+          <div>
+            <label><strong>Activation Date:</strong></label> {{ license.activationDate }}
+          </div>   
+          <div>
+              <label><strong>Life Time:</strong></label> {{ license.lifeTime }}
+            </div>   
+            <div>
+              <label><strong>Type:</strong></label> {{ license.type }}
+            </div>  
+            <div>
+              <label><strong>Status:</strong></label> {{ license.status }}
+            </div>
+            <div>
+              <label><strong>License Hash:</strong></label> {{ license.licenseHash }}
+            </div>
+            
+            
+            
+         
+          </div>
+
+    </div>
+    <div class="col-md-6">
+
+        <div >
+          <h4>Activation Configuration Settings</h4>
+      
+              <div>
+                  <label><strong>Hardware Id:</strong></label>{{validationRequest?.validationSettings?.hardwareId}}  
+                </div>   
+                <div>
+                  <label><strong>Email:</strong></label>{{validationRequest?.validationSettings?.email}}  
+                </div>   
+                <div>
+                  <label><strong>Company:</strong></label>{{validationRequest?.validationSettings?.company}}  
+                </div>   
+                <div>
+                  <label><strong>Location:</strong></label>{{validationRequest?.validationSettings?.location}}  
+                </div>   
+                <div>
+                  <label><strong>Customer Code:</strong></label>{{validationRequest?.validationSettings?.customerCode}}  
+                </div>   
+                <div>
+                  <label><strong>Settings Hash:</strong></label>
+                </div>
+                <div class="alert alert-danger small" role="alert">
+                  {{validationRequest?.validationSettings?.hashSettings}}             
+                </div>
+
+                <br>
+
+        
+            <h4>Validation Request Details</h4>
+            
+              <div> 
+                <label><strong>Request result:</strong></label> {{validationRequest.validationResult }} 
+              </div>
+              
+            
+            <div>
+                <label><strong>Id:</strong></label> {{ validationRequest.id }}
+              </div>       
+              <div>
+                <label><strong>Request Date:</strong></label> {{ validationRequest.requestDate }}
+              </div> 
+          <div>
+            <label><strong>Status:</strong></label> {{ validationRequest.status }}
+          </div>
+             
+          <div>
+              <label><strong>License Code:</strong></label> {{ validationRequest.licenseCode }}
+            </div>
+            
+            
+                                
+                
+         
+          </div>
+
+    </div>
+</div>

@@ -69,7 +69,7 @@
               <label><strong>Settings Hash:</strong></label>{{currentElement?.validationSettings?.hashSettings}}             
             </div>                    
             <div *ngIf="currentElement.validationResult==='Invalid'" style="padding-top: 20px;" >               
-                <a class="btn btn-secondary btn-lg btn-block" routerLink="/licensecompare">Compare with License</a>              
+                <a class="btn btn-secondary btn-lg btn-block" [routerLink]="['/licensecompare', currentElement.id]" >Compare with License</a>              
             </div>
      
       </div>

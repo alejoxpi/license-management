@@ -8,7 +8,9 @@ export const environment = {
   activationrequests_api : "http://localhost:7071/api/v1/activationrequests",
   licenses_api: "http://localhost:7071/api/v1/licenses",
   validationrequests_api : "http://localhost:7071/api/v1/validationrequests",
-  createactivationcodes_api : "http://localhost:7071/api/v1/createactivationcodes"
+  createactivationcodes_api : "http://localhost:7071/api/v1/createactivationcodes",
+  getLicenseIdUrl : "http://localhost:7071/api/v1/license",
+  getValidationRequestIdUrl : "http://localhost:7071/api/v1/validationrequest"
 };
 
 /*

@@ -1,16 +1,24 @@
 <div class="list row">    
     <div class="col-md-6">
       <h4>License List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let _element of _listElements; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveActivationCode(_element, i)"
-        >
-         {{_element.id}}
-        </li>
-      </ul>  
+      
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Activation Date</th>
+            <th scope="col">Status</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let _element of _listElements; let i = index" [class.active]="i == currentIndex" (click)="setActiveActivationCode(_element, i)">
+            <th scope="row"> {{_element.id}}</th>
+            <td>{{_element.activationDate}}</td>
+            <td>{{_element.status}}</td>           
+          </tr>          
+        </tbody>
+      </table>
+       
     </div>
 
     <div class="col-md-6">

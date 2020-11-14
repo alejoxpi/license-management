@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'licenses', component: LicenseListComponent },
   { path: 'validationrequests', component: ValidationRequestListComponent },
   { path: 'activationcodesadd', component: ActivationCodeAddComponent },
-  { path: 'licensecompare', component: LicenseCompareComponent }
+  { path: 'licensecompare/:id', component: LicenseCompareComponent }
 ];
 
 @NgModule({
