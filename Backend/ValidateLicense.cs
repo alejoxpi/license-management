@@ -94,26 +94,34 @@ namespace LM.Functions
                     DateTime _now = DateTime.UtcNow;
                     TimeSpan span = _now.Subtract ( license.ActivationDate );
 
-                    if(license.LifeTime > 0){
+                    if(license.Status == "Active")
+                    {
+                        if(license.LifeTime > 0){
 
-                        if(span.Minutes < license.LifeTime){
+                            if(span.Minutes < license.LifeTime){
 
-                            licenseValidationResponse.RemainingTime = license.LifeTime - span.Minutes;
+                                licenseValidationResponse.RemainingTime = license.LifeTime - span.Minutes;
+                                licenseValidationResponse.valid = true;
+                                licenseValidationResponse.active = true;
+                                licenseValidationResponse.LicenseStatus = "Active";
+                            }else{
+
+                                licenseValidationResponse.RemainingTime = -1;
+                                licenseValidationResponse.valid = false;
+                                licenseValidationResponse.active = false;
+                                licenseValidationResponse.LicenseStatus = "Expired";
+                            }
+                        }else{
+                            licenseValidationResponse.RemainingTime = -1;
                             licenseValidationResponse.valid = true;
                             licenseValidationResponse.active = true;
                             licenseValidationResponse.LicenseStatus = "Active";
-                        }else{
-
-                            licenseValidationResponse.RemainingTime = -1;
-                            licenseValidationResponse.valid = false;
-                            licenseValidationResponse.active = false;
-                            licenseValidationResponse.LicenseStatus = "Expired";
                         }
                     }else{
                         licenseValidationResponse.RemainingTime = -1;
                         licenseValidationResponse.valid = true;
-                        licenseValidationResponse.active = true;
-                        licenseValidationResponse.LicenseStatus = "Active";
+                        licenseValidationResponse.active = false;
+                        licenseValidationResponse.LicenseStatus = "Inactive";
                     }
                 }else{                    
                    licenseValidationResponse.RemainingTime = -1;
